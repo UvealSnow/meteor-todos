@@ -7,6 +7,7 @@ Vue.use(VueRouter)
   const AboutPage = () => import(/* webpackChunkName: landing */ '../pages/AboutPage.vue')
   const LandingPage = () => import(/* webpackChunkName: landing */ '../pages/LandingPage.vue')
 
+  const TaskIndexPage = () => import(/* webpackChunkName: tasks */ '../pages/tasks/Index.vue')
   const TaskShowPage = () => import(/* webpackChunkName: tasks */ '../pages/tasks/Show.vue')
 
 export default new VueRouter({
@@ -21,6 +22,11 @@ export default new VueRouter({
       path: '/about',
       name: 'aboutPage',
       component: AboutPage
+    },
+    {
+      path: '/tasks',
+      name: 'taskIndexPage',
+      component: TaskIndexPage
     },
     {
       path: '/tasks/:taskId',
