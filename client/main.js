@@ -1,21 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
-import VueRouter from 'vue-router'
+import VueMeteorTracker from 'vue-meteor-tracker'
 
-// Components
-  const LandingPage = () => import('./pages/LandingPage.vue');
-  const AboutPage = () => import('./pages/AboutPage.vue');
-
-Vue.use(VueRouter)
+Vue.use(VueMeteorTracker)
 
 Vue.config.productionTip = false
 
-const router = new VueRouter({
-  routes: [
-    { path: '/', name: 'landing', component: LandingPage },
-    { path: '/about', name: 'about', component: AboutPage }
-  ]
-});
+import router from './vue/router.js'
 
 Meteor.startup(() => {
   const app = new Vue({

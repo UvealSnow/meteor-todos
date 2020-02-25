@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>About page</p>
-    <router-link :to="{ name: 'landing' }">Home page</router-link>
+    <router-link :to="{ name: 'landingPage' }">Home page</router-link>
   </div>
 </template>
 
