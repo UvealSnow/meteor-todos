@@ -53,7 +53,8 @@
       },
 
       allTasks() {
-        return Tasks.find({}).fetch()
+        // This way we sort Tasks by new
+        return Tasks.find({}, { sort: { createdAt: -1 } }).fetch()
       }
     },
 
