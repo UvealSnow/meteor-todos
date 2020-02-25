@@ -1,9 +1,19 @@
 <template>
   <div>
-    <ul v-if="allTasks.length > 0">
-      <Task v-for="(task, index) in allTasks" :task="task" :key="index" />
+    <ul v-if="tasks.length > 0">
+      <Task v-for="(task, index) in tasks" :task="task" :key="index" />
     </ul>
     <p v-else>No tasks available</p>
+
+    <hr>
+
+    <form @submit.prevent="handleSubmit">
+      <div>
+        <label>Task text</label>
+        <input type="text" v-model="newTask.text">
+      </div>
+      <input type="submit" value="Add new task">
+    </form>
 
     <pre><code>
       {{allTasks}}
@@ -19,17 +29,21 @@
   export default {
     data() {
       return {
-        tasks: []
+        tasks: [],
+        newTask: { text: null }
       }
     },
 
     methods: {
-      // 
+      handleSubmit(event) {
+        Tasks.insert({ text: this.newTask.text, createdAt: new Date() })
+        this.newTask.text = null
+      }
     },
 
     watch: {
-      allTasks(oldVal, newVal) {
-        console.log(oldVal, newVal)
+      allTasks(newVal, oldVal) {
+        this.tasks = newVal
       }
     },
 
