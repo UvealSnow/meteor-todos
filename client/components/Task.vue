@@ -1,7 +1,7 @@
 <template>
   <li>
     <router-link :to="{ name: 'taskShowPage', params: { taskId: task._id } }"
-      v-text="task.name"></router-link>
+      v-text="`${task.text} (${task._id})`"></router-link>
   </li>
 </template>
 

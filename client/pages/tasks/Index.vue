@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul v-if="allTasks.length > 0">
-      <Task v-for="(task, index) in tasks" :task="task" :key="index" />
+      <Task v-for="(task, index) in allTasks" :task="task" :key="index" />
     </ul>
     <p v-else>No tasks available</p>
 
@@ -14,7 +14,7 @@
 
 <script type="text/javascript">
   import '/imports/collections/Task.js'                 // This is the collection instance for the tasks models
-  import { Task } from '/client/components/Task.vue'    // This is the vue component that renders the tasks
+  import Task from '/client/components/Task.vue'        // This is the vue component that renders the tasks
 
   export default {
     data() {
@@ -39,9 +39,7 @@
       },
 
       allTasks() {
-        return {
-          tasks: Tasks.find({}).fetch()
-        }
+        return Tasks.find({}).fetch()
       }
     },
 
