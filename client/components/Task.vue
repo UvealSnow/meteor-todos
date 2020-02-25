@@ -2,7 +2,7 @@
   <li>
     <input type="checkbox" v-model="task.checked" @click.prevent="toggleState">
     <router-link :to="{ name: 'taskShowPage', params: { taskId: task._id } }"
-      v-text="`${task.text} (${task._id})`"></router-link>
+      v-text="task.text"></router-link>
       <button @click="deleteTask">Delete</button>
   </li>
 </template>
