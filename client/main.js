@@ -11,7 +11,6 @@ import router from './vue/router.js'
 Meteor.startup(() => {
   const app = new Vue({
     render: h => h(App),
-    el: '#app',
     router
   }).$mount('#app')
 })
