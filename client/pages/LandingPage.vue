@@ -4,6 +4,11 @@
     <router-link :to="{ name: 'aboutPage' }">About us</router-link>
 
     <hr>
+      <h3>Tasks</h3>
+      <ul>
+        <Task v-for="(task, index) in tasks" :task="task" :key="index" />
+      </ul>
+    <hr>
 
     <div v-if="!$subReady.Time">Loading...</div>
     <div v-else>
@@ -27,12 +32,18 @@
 
 <script type="text/javascript">
   import '/imports/collections/Time.js'
+  import Task from '../components/Task.vue'
 
   export default {
     data() {
       return {
         hello: "World",
-        settings: Meteor.settings.public
+        settings: Meteor.settings.public,
+        tasks: [
+          { _id: 1, name: 'Task 1' },
+          { _id: 2, name: 'Task 2' },
+          { _id: 3, name: 'Task 3' },
+        ]
       }
     },
 
@@ -41,6 +52,10 @@
         console.log('Calling Meteor Method UpdateTime');
         Meteor.call('UpdateTime');          // not Meteor reactive
       }
+    },
+
+    components: {
+      Task
     },
 
     meteor: {
